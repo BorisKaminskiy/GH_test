@@ -2,17 +2,9 @@ import { useAppSelector } from '~/store/store'
 import { selectors } from '~/store/selectors'
 import { useGetCardsQuery } from '~/store/api/cardsApi'
 import axios from 'axios'
-import { mainUrl, endpoints } from '~/store/api/endpoints'
+import {endpoints } from '~/store/api/endpoints'
 import { ICardResults } from '~/types/card'
 import { useEffect, useState } from 'react'
-
-
-type TUserCardApi = {
-	data: ICardResults | undefined
-	status: number | null
-	error: string | null | unknown
-}
-
 
 export const useCardsApi = () => {
 	const searchParams = useAppSelector(selectors.getSearchParams)
@@ -43,13 +35,12 @@ export const useCardsApi = () => {
 	useEffect(() => axiosFetchData(), [searchParams])
 
 	//функционал прииспользовании rtk-query
-	// const { data, isFetching, error } = useGetCardsQuery({
-	// 	language: searchParams.language,
-	// 	page: searchParams.page,
-	// })
-
-
-
+	const { data: rtkData, isFetching, error: rtkError } = useGetCardsQuery({
+		language: searchParams.language,
+		page: searchParams.page,
+	})
+	console.info(rtkData, isFetching, rtkError)
 
 	return { ...response, error, isLoading }
+
 }
