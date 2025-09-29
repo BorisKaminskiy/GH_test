@@ -1,0 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: Roboto, sans-serif;
+}
+
+#root {
+  flex: 1;
+  max-width: 1440px;
+  width: 100%;
+  --active_color: #3c8b3a;
+}

@@ -1,0 +1,35 @@
+.portal {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  align-items: center;
+  row-gap: 100px;
+  padding-top: 400px;
+  background-color: rgb(210, 238, 210);
+  z-index: 100;
+  opacity: 0.4;
+}
+
+.spiner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #3c8b3a;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,44 @@
+.root {
+  //unset
+  all: unset;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  //
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(0);
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+
+.small {
+}
+
+.medium {
+  width: 34px;
+  height: 34px;
+  border: 3px solid #3c8b3a;
+  border-radius: 50%;
+}
+
+.large {
+  width: 50px;
+  height: 50px;
+  svg {
+    transition: fill 0.2s linear;
+  }
+
+  &:hover {
+    svg {
+      fill: var(--active_color);
+      transition: fill 0.2s linear;
+    }
+  }
+}
+
+.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.2s linear;
+}
