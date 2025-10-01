@@ -37,7 +37,6 @@ const CardContainer: FC<ICardContainerProps> = ({ ...props }) => {
               key={item.id}
             />
           ))}
-
         </div>
       </div>}
     </div>
@@ -45,3 +44,4 @@ const CardContainer: FC<ICardContainerProps> = ({ ...props }) => {
 }
 
 export default CardContainer
+
