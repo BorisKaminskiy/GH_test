@@ -1,20 +1,19 @@
-import { FC, DetailedHTMLProps, HTMLAttributes } from 'react'
-import { CardContainer } from './components'
+import { FC } from 'react'
+import { CardContainer, Pagination } from './components'
+import cn from 'classnames'
+
+import styles from './Items.module.scss'
 
 
-interface IItemsProps
-  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  name?: string
-}
-
-const Items: FC<IItemsProps> = ({ ...props }) => {
-	
+const Items: FC = () => {
 
   return (
-    <>
-			<CardContainer {...props} />
-    </>
+    <div className={cn(styles.root)} >
+      <CardContainer />
+      <Pagination />
+    </div>
   )
 }
 
 export default Items
+
