@@ -7,7 +7,7 @@ import { Card } from '~/components'
 import { Spiner, Typography } from '~/ui'
 import cn from 'classnames'
 import styles from './CardContainer.module.scss'
-import Pagination from '../Pagination/Pagination'
+
 
 
 interface ICardContainerProps
@@ -30,7 +30,6 @@ const CardContainer: FC<ICardContainerProps> = ({ ...props }) => {
 
       {data && !error && <div className={cn(styles.wrapper)}>
         <div className={cn(styles.container)}>
-
           {data.items.map((item, index) => (
             <Card
               onClick={onCardClick(index, item.id)}
@@ -40,9 +39,6 @@ const CardContainer: FC<ICardContainerProps> = ({ ...props }) => {
           ))}
 
         </div>
-        <Pagination />
-
-
       </div>}
     </div>
   )
