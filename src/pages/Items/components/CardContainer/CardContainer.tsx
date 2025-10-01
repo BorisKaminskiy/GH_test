@@ -1,38 +1,31 @@
 import { FC, DetailedHTMLProps, HTMLAttributes } from 'react'
-import { useNavigate } from 'react-router'
 import { useCardsApi } from '~/hooks/useCardsApi'
 import { normalizeCardShortData } from '~/utils/normalizeCardShortData'
-import { ICardFull } from '~/types/card'
+import { ICardResults } from '~/types/card'
 import { Card } from '~/components'
 import { Spiner, Typography } from '~/ui'
 import cn from 'classnames'
 import styles from './CardContainer.module.scss'
 
-
-
 interface ICardContainerProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  name?: string
+  onCardClick: (index: number, cardObject: ICardResults, id: string | number) => () => void
 }
 
-const CardContainer: FC<ICardContainerProps> = ({ ...props }) => {
+const CardContainer: FC<ICardContainerProps> = ({ onCardClick }: ICardContainerProps) => {
   const { data, isLoading, error } = useCardsApi()
-  const navigate = useNavigate()
-
-  const onCardClick = (index: number, id: string | number) => () => {
-    navigate(`/project/${id}`, { state: data?.items[index] as ICardFull })
-  }
 
   return (
-    <div className={cn(styles.root)} {...props}>
+    <div className={cn(styles.root)}>
       {isLoading && <Spiner />}
       {error && <div className={cn(styles.error)}> <Typography variant="t30b">{error}</Typography></div>}
 
       {data && !error && <div className={cn(styles.wrapper)}>
         <div className={cn(styles.container)}>
+
           {data.items.map((item, index) => (
             <Card
-              onClick={onCardClick(index, item.id)}
+              onClick={onCardClick(index, data, item.id)}
               cardData={normalizeCardShortData(item)}
               key={item.id}
             />
@@ -44,4 +37,3 @@ const CardContainer: FC<ICardContainerProps> = ({ ...props }) => {
 }
 
 export default CardContainer
-
